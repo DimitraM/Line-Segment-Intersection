@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 import geopandas as gpd
 from shapely.geometry import Point,LineString
 import numpy as np
+import time
+
+# get the start time
+st = time.time()
+
 flights =pd.read_csv(r'/home/dimitra/Documents/Domes/geopandas/2011_february_aa_flight_paths.csv')
 
 # out of every line i make a new dataframe that has a collumn named 'geometry' which consists of LineStrings of 2 Poins each. Every Point has a Longitude and a Latitude. Fist Point simbolizes the
@@ -111,6 +116,9 @@ for index, row1 in flights.iterrows():
                 # Add first scatter trace with medium sized markers
         else:
                 print("No intersection")
-
+                
+et = time.time()
+elapsed_time = et - st
+print('Execution time:', elapsed_time, 'seconds')
 ax.scatter(x,y)
 plt.show()
